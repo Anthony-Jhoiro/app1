@@ -1,56 +1,31 @@
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
-
-  <p>
-    Recommended setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a
-      href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
-      target="_blank"
-    >Vetur</a>
-    +
-    <a
-      href="https://marketplace.visualstudio.com/items?itemName=znck.vue-language-features"
-      target="_blank"
-    >Vue DX</a>
-  </p>
-  <p>
-    Make sure to use workspace version of TypeScript to get improved support via
-    <a
-      href="https://github.com/znck/vue-developer-experience"
-      target="_blank"
-    >@vuedx</a>.
-    <br />Note @vuedx is still experimental and this setup is provided for early feedback.
-  </p>
-  <button @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <input type="text" v-model="inputValue" />
+  <p>{{ inputValue }}</p>
+  <ul>
+    <li v-for="item in lst" :key="item.id">{{ item.name }}</li>
+  </ul>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'HelloWorld',
-  props: {
-    msg: {
-      type: String,
-      required: true
-    }
+  name: "HelloWorld",
+  props: {},
+
+  data: () => {
+    return {
+      inputValue: "",
+      lst: [
+        { id: 1, name: "name1" },
+        { id: 2, name: "name2" },
+        { id: 3, name: "name3" },
+        { id: 4, name: "name4" },
+        { id: 5, name: "name5" },
+      ],
+    };
   },
-  setup: () => {
-    const count = ref(0)
-    return { count }
-  }
-})
+});
 </script>
 
 <style scoped>
