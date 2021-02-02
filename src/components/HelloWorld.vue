@@ -1,9 +1,10 @@
 <template>
   <input type="text" v-model="inputValue" />
-  <p>{{ inputValue }}</p>
-  <ul>
+  <p v-if="cpt >= 1">{{ inputValue }}</p>
+  <ul v-if="cpt >= 2">
     <li v-for="item in lst" :key="item.id">{{ item.name }}</li>
   </ul>
+  <button @click="handleButton">Click me</button>
 </template>
 
 <script lang="ts">
@@ -16,6 +17,7 @@ export default defineComponent({
   data: () => {
     return {
       inputValue: "",
+      cpt: 0,
       lst: [
         { id: 1, name: "name1" },
         { id: 2, name: "name2" },
@@ -24,6 +26,12 @@ export default defineComponent({
         { id: 5, name: "name5" },
       ],
     };
+  },
+
+  methods: {
+    handleButton() {
+      this.cpt++;
+    },
   },
 });
 </script>
