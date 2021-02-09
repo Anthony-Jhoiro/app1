@@ -14,7 +14,7 @@ export default defineComponent({
   name: "HelloWorld",
   props: {},
 
-  data: () => {
+  data() {
     return {
       inputValue: "",
       cpt: 0,
